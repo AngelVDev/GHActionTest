@@ -13,21 +13,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Check for "delete branch" label
-        id: check_label
-        run: |
-          if [[ $(jq '.pull_request.labels[].name' $GITHUB_EVENT_PATH | grep 'delete branch') ]]; then
-            echo "::set-output name=delete_branch::true"
-          fi
-
-      - name: Delete Branch
-        if: steps.check_label.outputs.delete_branch == 'true'
-        run: |
-          git push origin --delete ${{ github.event.pull_request.head.ref }}
-
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: delete branch
+        uses: SvanBoxel/delete-merged-branch@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
