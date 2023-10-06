@@ -1,0 +1,16 @@
+name: Delete branch after merge
+on:
+  pull_request:
+    types:
+      - closed
+jobs:
+  delete_branch:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Delete merged branch
+        uses: SvanBoxel/delete-merged-branch@1.4.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
