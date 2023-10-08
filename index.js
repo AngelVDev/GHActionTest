@@ -9,5 +9,5 @@ function generatePassword(length) {
   return password;
 }
 
-const generatedPassword = generatePassword(8); // Adjust the length as per your requirement.
+const generatedPassword = generatePassword(7) // Adjust the length as per your requirement.
 console.log(generatedPassword);
