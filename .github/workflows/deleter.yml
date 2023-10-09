@@ -1,4 +1,4 @@
-name: Delete Branch on Merge
+name: Delete branch by label
 
 on:
   push:
