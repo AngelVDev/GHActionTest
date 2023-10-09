@@ -8,6 +8,8 @@ function generatePassword(length) {
   }
   return password;
 }
-//This could be the final test
+//This could be the real final test.
+//It shouldn't be deleted
+//Why? Because it doesn't have the 'delete branch' label.
 const generatedPassword = generatePassword(7)
 console.log(generatedPassword);
