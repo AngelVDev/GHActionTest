@@ -8,6 +8,6 @@ function generatePassword(length) {
   }
   return password;
 }
-
+//This could be the final test
 const generatedPassword = generatePassword(7)
 console.log(generatedPassword);
