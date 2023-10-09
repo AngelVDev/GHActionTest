@@ -8,24 +8,17 @@ on:
 jobs:
   delete-branch:
     runs-on: ubuntu-latest
-
+    if: github.event.pull_request.merged == true
     steps:
-      - name: Checkout Code
+      - name: checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.ME_TOKEN }}
-      - name: Find and Delete Branch
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Detecting label
+        if: contains(github.event.pull_request.labels.*.name, 'delete branch')
+        run: echo Deleting branch
+      - name: Delete branch
         run: |
-          # Get the most recently merged Pull Request
-          PR_NUMBER=$(git log --merges --pretty=format:"%h %b" | grep 'Merge pull request #' | head -n 1 | awk '{print $5}' | sed 's/#//')
-          
-          # Get the labels of the Pull Request
-          LABELS=$(gh pr view $PR_NUMBER --json labels -q .labels)
-          
-          # Check if the "delete branch" label exists
-          if echo "$LABELS" | grep -q '"name": "delete branch"'; then
-            # Extract the branch name from the PR
-            BRANCH_NAME=$(gh pr view $PR_NUMBER --json headRefName -q .headRefName)
-            # Delete the branch
-            git push origin --delete "$BRANCH_NAME"
-          fi
+          git push origin --delete $BRANCH_TO_DELETE
+        env:
+          BRANCH_TO_DELETE: ${{ github.event.pull_request.head.ref }}
