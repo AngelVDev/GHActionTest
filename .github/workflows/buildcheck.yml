@@ -17,7 +17,5 @@ jobs:
          with:
            token: ${{ secrets.GITHUB_TOKEN }}
            node-version: '16.x'
-           cache: 'npm'
-           cache-dependency-path: subdir/package-lock.json
        - run: npm ci
        - run: npm run build
