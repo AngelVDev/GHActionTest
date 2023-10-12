@@ -23,6 +23,7 @@ export const App = component$(() => {
         <p>
           Edit <code>src/app.jsx</code> and save to test HMR
         </p>
+        <img src='https://upload.wikimedia.org/wikipedia/en/2/29/Count_von_Count_kneeling.png'></img>
       </div>
       <p class="read-the-docs">
         Click on the Vite and Qwik logos to learn more
