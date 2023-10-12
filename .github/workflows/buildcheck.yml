@@ -4,24 +4,20 @@ on:
   pull_request:
     branches: [develop]
     types: [opened]
-    paths:
-      - ['frontend/**']
+    paths: ['frontend/**']
 
 jobs:
-  frontend_check:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Checks build
-        uses: actions/setup-node@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          node-version: '16.x'
-          cache: 'npm'
-          cache-dependency-path: subdir/package-lock.json
-      - run: npm ci
-      - run: npm run build
+   frontend_check:
+     runs-on: ubuntu-22.04
+     steps:
+       - name: Checkout
+         uses: actions/checkout@v4
+       - name: Checks build
+         uses: actions/setup-node@v3
+         with:
+           token: ${{ secrets.GITHUB_TOKEN }}
+           node-version: '16.x'
+           cache: 'npm'
+           cache-dependency-path: subdir/package-lock.json
+       - run: npm ci
+       - run: npm run build
