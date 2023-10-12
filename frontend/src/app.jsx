@@ -6,7 +6,7 @@ import './app.css'
 
 export const App = component$(() => {
   const count = useSignal(0)
-//...
+//....
   return (
     <>
       <div>
