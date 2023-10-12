@@ -19,7 +19,7 @@ export const App = component$(() => {
       </div>
       <h1>Vite + Qwik</h1>
       <div class="card">
-        <button onClick$={() => count.value++}>count is {count.value}</button>
+        <button onClick$={() => count.value++}>Count's count is {count.value}</button>
         <p>
           Edit <code>src/app.jsx</code> and save to test HMR
         </p>
