@@ -10,6 +10,7 @@ jobs:
    frontend_check:
      runs-on: ubuntu-22.04
      steps:
+       - run: cd frontend
        - name: Checkout
          uses: actions/checkout@v4
        - name: Checks build
@@ -17,6 +18,5 @@ jobs:
          with:
            token: ${{ secrets.GITHUB_TOKEN }}
            node-version: '18.x'    
-       - run: cd frontend
        - run: npm ci
        - run: npm run build
