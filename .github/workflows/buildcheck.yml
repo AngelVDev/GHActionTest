@@ -16,8 +16,7 @@ jobs:
          uses: actions/setup-node@v3
          with:
            token: ${{ secrets.GITHUB_TOKEN }}
-           node-version: '18.x'    
-       - name: Move to frontend
+           node-version: '18.x'
        - run: cd frontend
        - run: npm ci
        - run: npm run build
