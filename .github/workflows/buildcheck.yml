@@ -17,5 +17,6 @@ jobs:
          with:
            token: ${{ secrets.GITHUB_TOKEN }}
            node-version: '18.x'    
-       - run: cd frontend & npm ci
-       - run: cd frontend & npm run build
+       - run: cd frontend
+       - run: npm ci
+       - run: npm run build
