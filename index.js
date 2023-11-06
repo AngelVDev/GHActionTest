@@ -11,5 +11,6 @@ function generatePassword(length) {
 //This could be the real final test.
 //It shouldn't be deleted
 //Why? Because it doesn't have the 'delete branch' label.
+//A change to trigger labeler
 const generatedPassword = generatePassword(7)
 console.log(generatedPassword);
