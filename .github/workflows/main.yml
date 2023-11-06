@@ -1,0 +1,27 @@
+# .github/workflows/preview.yml
+
+name: Preview Environment
+
+env:
+  VERCEL_ACCESS_TOKEN: ${{ secrets.VERCEL_ACCESS_TOKEN }}
+  VERCEL_PROJECT_ID: prj_z8ROXEEv6RJYcge751ZVxwky4unv
+
+on:
+  pull_request:
+    types: [opened, synchronize, closed]
+    branches:
+      - main
+
+jobs:
+  deploy:
+    if: ${{ github.event.action == 'opened' || github.event.action == 'synchronize' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: snaplet/vercel-action@v3
+  delete:
+    if: ${{ github.event.action == 'closed' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: snaplet/vercel-action@v3
+        with:
+          delete: true
