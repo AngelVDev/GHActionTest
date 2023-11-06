@@ -1,0 +1,10 @@
+# Add 'label1' to any changes within 'example' folder or any subfolders
+frontend:
+- frontend/**
+
+# Add 'label2' to any file changes within 'example2' folder
+outside: **/frontend
+
+# Add label3 to any change to .txt files within the entire repository. Quotation marks are required for the leading asterisk
+a-joke:
+- '**/*.txt'
