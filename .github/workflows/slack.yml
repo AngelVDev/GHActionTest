@@ -1,0 +1,27 @@
+name: 'Send Notifications'
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send Notification to slack
+      uses: AngelVDev/DisSlackNoti@v1
+      with:
+        githubToken: ${{ secrets.GITHUB_TOKEN }}
+        messageType: 'slack' 
+        slackToken: ${{ secrets.SLACK_API_TOKEN }}
+        slackChannel: ${{ secrets.SLACK_CHANNEL}}
+
+    - name: Send notification to Discord
+      uses: AngelVDev/DisSlackNoti@v1
+      if: always()
+      with:
+        githubToken: ${{ secrets.GITHUB_TOKEN }}
+        messageType: 'discord'
+        discordWebhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
