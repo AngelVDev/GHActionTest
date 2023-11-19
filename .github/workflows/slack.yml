@@ -13,7 +13,7 @@ jobs:
     - name: Send Notification to slack
       uses: AngelVDev/DisSlackNoti@v1
       with:
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
+        githubToken: ${{ secrets.ME_TOKEN }}
         messageType: 'slack' 
         slackToken: ${{ secrets.SLACK_API_TOKEN }}
         slackChannel: ${{ secrets.SLACK_CHANNEL}}
